@@ -1,28 +1,35 @@
 console.log("this is working");
 
 const container = document.querySelector("#container");
-// const grid1 = document.querySelectorAll(".grid");
-
-// console.log(grid1)
+const resetButton = document.querySelector("#resetButton");
 
 let square = 16; 
 let totalSquare = square * square; 
+let color = "yellow"
+let initialGridColor = "rgb(209, 204, 204)"
 
 
-for (let i = 0 ; i < totalSquare ; i++) {
-    const grid = document.createElement("button");
-    grid.innerText = "HELLO"
-    grid.className = "grid"
-    container.appendChild(grid);
-    grid.addEventListener("mouseenter", function () {
-        grid.style.backgroundColor = "black";
-    })
-    grid.addEventListener("mouseleave", function () {
-        grid.style.backgroundColor = "grey";
-    })
+const madeGrid = function() {
+    container.innerHTML = ""
+    for (let i = 0 ; i < totalSquare ; i++) {
+        const grid = document.createElement("div");
+        const gridSize = 100 / square;
+    
+        grid.innerText = ""
+        grid.className = "grid"
+        grid.style.backgroundColor = initialGridColor;
+        container.appendChild(grid);
+        grid.addEventListener("mouseenter", function () {
+            grid.style.backgroundColor = color;
+        })
+        grid.style.width = `${gridSize}%`;
+        grid.style.height = `${gridSize}%`;
+    }
 }
 
-// grid1.addEventListener("click", function () {
-//     grid1.backgroundColor = "white";
-// })
+madeGrid()
 
+
+resetButton.addEventListener("click", function() {
+    madeGrid()
+})

@@ -1,3 +1,22 @@
-.grid {
-    background-color: aliceblue;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*  */
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 30rem;
+    width: 30rem;
+    border: rgb(209, 204, 204) solid;
+    border-radius: 10px;
+    border-width: 10px;
+
 }

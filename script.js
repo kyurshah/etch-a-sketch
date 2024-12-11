@@ -16,7 +16,8 @@ function squareProperty(grid) {
     grid.style.backgroundColor = "rgb(240, 240, 240)";
     grid.style.margin = 0;
     grid.style.padding = 0;
-    grid.style.opacity = 0.05;
+    grid.style.opacity = 0.0;
+    grid.style.backgroundColor = rgbColor();
 }
 
 function rgbColor() {
@@ -28,9 +29,10 @@ function rgbColor() {
 
 }
 
+
+
 function mouseHoverEffect(grid) {
     grid.addEventListener("mouseover", function() {
-        grid.style.backgroundColor = rgbColor();
 
         let currentOpacity = parseFloat(grid.style.opacity);
         if (currentOpacity < 1) {

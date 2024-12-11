@@ -6,8 +6,7 @@ const setGridSize = document.querySelector("#gridSizeButton");
 const eraser = document.querySelector("#eraserButton");
 
 let square = 16;
-let totalSquares = square * square;
-
+// const grid = document.createElement("div");
 
 function squareProperty(grid) {
     let gridSize = 100 / square ;
@@ -21,6 +20,7 @@ function squareProperty(grid) {
     grid.style.padding = 0;
     grid.style.opacity = 0.05;
 }
+
 
 function rgbColor() {
     const red = Math.floor(Math.random() * 256);
@@ -44,18 +44,43 @@ function mouseHoverEffect(grid) {
 }
 
 function createGrid() {
-
+    let totalSquares = square * square;
     for (let i = 0 ; i < totalSquares ; i++) {
-        const grid = document.createElement("button");
-
+        const grid = document.createElement("div");
         squareProperty(grid);
         gridContainer.appendChild(grid);
 
         mouseHoverEffect(grid);
-
-
     }
 }
 
-createGrid()
+createGrid();
 
+
+function reset() {
+    gridContainer.innerHTML = "";
+    square = 16;
+    createGrid();
+}
+
+
+resetButton.addEventListener("click", function() {
+    reset();
+})
+
+
+function userPrompt() {
+    let userPrompt = prompt("what size grind would you like? [Between 4 and 100]");
+    if (userPrompt < 4 || userPrompt > 100){
+        userPrompt = 16;
+        alert("default set to 16 grid");
+    }
+    
+    return userPrompt;
+}
+
+setGridSize.addEventListener("click", function() {
+    gridContainer.innerHTML = "";
+    square = userPrompt();
+    createGrid();
+})

@@ -1,12 +1,10 @@
-console.log("this is working");
-
 const gridContainer = document.querySelector("#gridContainer");
 const resetButton = document.querySelector("#resetButton");
 const setGridSize = document.querySelector("#gridSizeButton");
-const eraser = document.querySelector("#eraserButton");
 
+
+// Creating inital grid 
 let square = 16;
-// const grid = document.createElement("div");
 
 function squareProperty(grid) {
     let gridSize = 100 / square ;
@@ -20,7 +18,6 @@ function squareProperty(grid) {
     grid.style.padding = 0;
     grid.style.opacity = 0.05;
 }
-
 
 function rgbColor() {
     const red = Math.floor(Math.random() * 256);
@@ -56,7 +53,7 @@ function createGrid() {
 
 createGrid();
 
-
+// Reset Button functionality 
 function reset() {
     gridContainer.innerHTML = "";
     square = 16;
@@ -69,13 +66,14 @@ resetButton.addEventListener("click", function() {
 })
 
 
+// Set Gride Size Button functionality
 function userPrompt() {
     let userPrompt = prompt("what size grind would you like? [Between 4 and 100]");
     if (userPrompt < 4 || userPrompt > 100){
         userPrompt = 16;
         alert("default set to 16 grid");
     }
-    
+
     return userPrompt;
 }
 
